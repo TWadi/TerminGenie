@@ -21,7 +21,7 @@ First, clone the repository to your local machine using Git:
 
 bash
 
-git clone git@github.com:TWadi/TerminGenie.git
+git clone [git@github.com:TWadi/TerminGenie.git](https://github.com/TWadi/TerminGenie.git)
 cd AppointmentScheduler
 
 2. Create a Virtual Environment
