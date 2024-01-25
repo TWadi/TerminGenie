@@ -2,6 +2,7 @@ import time
 import logging
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from playsound import playsound
 from web_driver import CustomWebDriver
 
 class AppointmentScheduler:
@@ -12,7 +13,8 @@ class AppointmentScheduler:
     def __init__(self):
         self.wait_time = 20
         self.error_message = "Für die gewählte Dienstleistung sind aktuell keine Termine frei! Bitte"
-
+        self.alarm_sound = "Alarm.wav"  
+        
     def visit_start_page(self, driver):
         """
         Navigates to the start page and initiates the appointment booking process.
@@ -87,7 +89,8 @@ class AppointmentScheduler:
         for _ in range(10):
             if self.error_message not in driver.page_source:
                 logging.info("!!!SUCCESS - do not close the window!!!")
-                return
+                playsound(self.alarm_sound)  # Play the alarm sound
+                time.sleep(15)
             logging.info("Retrying form submission")
             submit_button_id = 'applicationForm:managedForm:proceed'
             driver.find_element(By.ID, submit_button_id).click()
@@ -107,6 +110,8 @@ class AppointmentScheduler:
         """
         Continuously runs the booking process until successful.
         """
+        playsound(self.alarm_sound)  # Play the alarm sound
+
         while True:
             logging.info("Starting a new attempt")
             self.run_once()
