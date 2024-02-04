@@ -66,12 +66,7 @@
                            Margin="0,0,0,5"/>
                 <ComboBox Margin="0,0,0,20" SelectionChanged="ComboBox_SelectionChanged" Style="{StaticResource {x:Type ComboBox}}">
                     <ComboBoxItem Content="Bitte auswählen" IsSelected="True"/>
-                    <ComboBoxItem Content="ungeklärt (Palästinenser und Kurden aus dem Libanon)"/>
-                    <ComboBoxItem Content="ungeklärt / Palästinenser aus Syrien (Familiennamen A – E)"/>
-                    <ComboBoxItem Content="ungeklärt / Palästinenser aus Syrien (Familiennamen F – Z)"/>
-                    <ComboBoxItem Content="Afghanistan"/>
-                    <ComboBoxItem Content="Ägypten"/>
-                    <ComboBoxItem Content="Albanien"/>
+                    <ComboBoxItem Content="Tunesien"/>
                 </ComboBox>
 
                 <!-- Anzahl der Personen -->
@@ -161,7 +156,7 @@
 
         <!-- Footer -->
         <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
-            <Button Content="Weiter" Style="{StaticResource {x:Type Button}}"/>
+            <Button Content="Weiter" Style="{StaticResource {x:Type Button}}" Click="OnButtonClick"/>
         </StackPanel>
     </Grid>
 </Window>

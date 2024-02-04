@@ -38,3 +38,32 @@ C:\Users\Wadi\OneDrive\Desktop\New folder\TerminGenie\TerminGenie\TerminGenie\ob
 C:\Users\Wadi\OneDrive\Desktop\New folder\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.pdb
 C:\Users\Wadi\OneDrive\Desktop\New folder\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.genruntimeconfig.cache
 C:\Users\Wadi\OneDrive\Desktop\New folder\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\ref\TerminGenie.dll
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\TerminGenie.exe
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\TerminGenie.deps.json
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\TerminGenie.runtimeconfig.json
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\TerminGenie.dll
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\TerminGenie.pdb
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie_MarkupCompile.cache
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.g.resources
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.AssemblyInfoInputs.cache
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.AssemblyInfo.cs
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.csproj.CoreCompileInputs.cache
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.sourcelink.json
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.dll
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\refint\TerminGenie.dll
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.pdb
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.genruntimeconfig.cache
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\ref\TerminGenie.dll
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.csproj.AssemblyReference.cache
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie_Content.g.cs
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\selenium-manager\linux\selenium-manager
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\selenium-manager\macos\selenium-manager
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\selenium-manager\windows\selenium-manager.exe
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\WebDriver.dll
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\obj\Debug\net8.0-windows\TerminGenie.csproj.CopyComplete
+C:\Users\Wadi\OneDrive\Desktop\New folder (3)\TerminGenie\TerminGenie\TerminGenie\bin\Debug\net8.0-windows\WebDriver.Support.dll

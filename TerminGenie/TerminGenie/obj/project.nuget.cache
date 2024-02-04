@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "StwwhayDdr6P9pKe56kZQIeinnStwqYcD3oJBifxBS7L8ymVQ24uGU8hxri53Dj6ePkDjphPYrMNAlgJQvZvPw==",
+  "dgSpecHash": "LYrQxJmzgdxO8JBauaVW/vQpQrGi+iP3z2HZp1fXVQmRBEog45ViixSVKDQZEFXxUDwrHgD+bbhfEahfeKO6Tg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Wadi\\OneDrive\\Desktop\\New folder\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Wadi\\OneDrive\\Desktop\\New folder (3)\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Wadi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Wadi\\.nuget\\packages\\selenium.support\\4.17.0\\selenium.support.4.17.0.nupkg.sha512",
+    "C:\\Users\\Wadi\\.nuget\\packages\\selenium.webdriver\\4.17.0\\selenium.webdriver.4.17.0.nupkg.sha512"
+  ],
   "logs": []
 }
