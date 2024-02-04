@@ -1,65 +1,171 @@
 ﻿<Window x:Class="TerminGenie.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TerminGenie"
-        mc:Ignorable="d"
-        Title="Terminvereinbarung" Height="700" Width="800">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="10">
+        Title="Terminauswahl" Height="700" Width="800">
 
-            <!-- Nationality selection -->
-            <TextBlock Text="Staatsangehörigkeit (Wenn Sie staatenlos sind: Wählen Sie bitte den Staat aus, aus dem Sie oder Ihre Eltern stammen.)" FontWeight="Bold" Margin="0,0,0,5"/>
-            <ComboBox Margin="0,0,0,20">
-                <ComboBoxItem Content="Bitte auswählen" IsSelected="True"/>
-                <!-- Additional ComboBoxItems for nationality based on the screenshots -->
-                <!-- Repeat for each nationality option provided -->
-            </ComboBox>
+    <!-- Window Resources for Styling -->
+    <Window.Resources>
+        <!-- Styles for TextBlocks -->
+        <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
 
-            <!-- Number of people selection -->
-            <TextBlock Text="Anzahl der Personen, die einen Aufenthaltstitel beantragen (auch ausländische Ehepartner und Kinder)" FontWeight="Bold" Margin="0,0,0,5"/>
-            <ComboBox Margin="0,0,0,20">
-                <ComboBoxItem Content="Bitte auswählen" IsSelected="True"/>
-                <!-- Additional ComboBoxItems for number of people -->
-                <ComboBoxItem Content="eine Person"/>
-                <ComboBoxItem Content="zwei Personen"/>
-                <!-- Repeat for each option provided up to "acht Personen" -->
-            </ComboBox>
+        <!-- Style for ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
 
-            <!-- Reasons for the appointment -->
-            <TextBlock Text="Leben Sie in Berlin zusammen mit einem Familienangehörigen (z.B. Ehepartner, Kind)" FontWeight="Bold" Margin="0,0,0,5"/>
-            <ComboBox Margin="0,0,0,20">
-                <ComboBoxItem Content="nein" IsSelected="True"/>
-                <!-- Additional ComboBoxItems for reasons -->
-                <ComboBoxItem Content="Aufenthaltstitel - beantragen"/>
-                <ComboBoxItem Content="Aufenthaltstitel - verlängern"/>
-                <!-- Repeat for each option provided -->
-            </ComboBox>
+        <!-- Style for Buttons -->
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
 
-            <!-- Specific options for each reason -->
-            <TextBlock Text="Studium und Ausbildung" FontWeight="Bold" Margin="0,0,0,5"/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                <!-- CheckBoxes for specific options -->
-                <CheckBox Content="Studium"/>
-                <CheckBox Content="Ausbildung"/>
-                <!-- Additional CheckBoxes as needed -->
-            </StackPanel>
+        <!-- Style for Expanders -->
+        <Style TargetType="Expander">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
 
-            <!-- Subsections for a selected reason -->
-            <Expander Header="Erwerbstätigkeit" IsExpanded="True" Margin="0,0,0,20">
-                <StackPanel>
-                    <!-- CheckBoxes for Erwerbstätigkeit subsections -->
-                    <CheckBox Content="Aufenthaltserlaubnis für Fachkräfte mit akademischer Ausbildung (§ 18b)"/>
-                    <CheckBox Content="Aufenthaltserlaubnis für Fachkräfte mit Berufsausbildung (§ 18a)"/>
-                    <!-- Repeat for each option provided -->
-                </StackPanel>
-            </Expander>
+    <!-- Main Grid -->
+    <Grid>
+        <!-- Grid Definitions -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <!-- Other sections can be added in similar Expander controls -->
-            <!-- ... -->
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="Terminauswahl - Schritt 3 von 3"
+                   FontWeight="Bold" FontSize="24" Margin="10" HorizontalAlignment="Left"/>
 
-            <Button Content="Weiter" Margin="0,20,0,0"/>
+        <!-- Remaining Time -->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
+            <Image Source="/Logo.png" Width="131" Height="114" VerticalAlignment="Center" Margin="0,0,5,0" RenderTransformOrigin="1,0.5"/>
         </StackPanel>
-    </ScrollViewer>
+
+        <!-- ScrollViewer to Enable Scrolling -->
+        <ScrollViewer Grid.Row="1">
+            <!-- Main content -->
+            <StackPanel Margin="10">
+                <TextBlock Text="Angaben zum Anliegen" FontWeight="Bold" Style="{StaticResource HeaderTextBlockStyle}"/>
+
+                <!-- Staatsangehörigkeit -->
+                <TextBlock Text="Staatsangehörigkeit (Wenn Sie staatenlos sind: Wählen Sie bitte den Status, aus dem Sie oder Ihre Eltern stammen.)*"
+                           Margin="0,0,0,5"/>
+                <ComboBox Margin="0,0,0,20" SelectionChanged="ComboBox_SelectionChanged" Style="{StaticResource {x:Type ComboBox}}">
+                    <ComboBoxItem Content="Bitte auswählen" IsSelected="True"/>
+                    <ComboBoxItem Content="ungeklärt (Palästinenser und Kurden aus dem Libanon)"/>
+                    <ComboBoxItem Content="ungeklärt / Palästinenser aus Syrien (Familiennamen A – E)"/>
+                    <ComboBoxItem Content="ungeklärt / Palästinenser aus Syrien (Familiennamen F – Z)"/>
+                    <ComboBoxItem Content="Afghanistan"/>
+                    <ComboBoxItem Content="Ägypten"/>
+                    <ComboBoxItem Content="Albanien"/>
+                    <!-- Add more items as needed -->
+                </ComboBox>
+
+                <!-- Anzahl der Personen -->
+                <TextBlock Text="Anzahl der Personen, die einen Aufenthaltstitel beantragen (auch ausländische Ehepartner und Kinder)" 
+                           FontWeight="Bold" Style="{StaticResource HeaderTextBlockStyle}" Margin="0,20,0,5"/>
+                <ComboBox Margin="0,0,0,20" Style="{StaticResource {x:Type ComboBox}}">
+                    <ComboBoxItem Content="Bitte auswählen" IsSelected="True"/>
+                    <ComboBoxItem Content="eine Person"/>
+                    <ComboBoxItem Content="zwei Personen"/>
+                    <ComboBoxItem Content="drei Personen"/>
+                    <!-- Add more items as needed -->
+                </ComboBox>
+
+                <!-- Leben Sie in Berlin -->
+                <TextBlock Text="Leben Sie in Berlin zusammen mit einem Familienangehörigen?" 
+                           FontWeight="Bold" Style="{StaticResource HeaderTextBlockStyle}" Margin="0,20,0,5"/>
+                <ComboBox Margin="0,0,0,20" Style="{StaticResource {x:Type ComboBox}}">
+                    <ComboBoxItem Content="nein"/>
+                    <ComboBoxItem Content="ja"/>
+                    <!-- Add more options if needed -->
+                </ComboBox>
+
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
+                    <Button Content="Aufenthaltstitel - beantragen" Style="{StaticResource {x:Type Button}}"/>
+                    <Button Content="Aufenthaltstitel - verlängern" Style="{StaticResource {x:Type Button}}"/>
+                    <Button Content="Aufenthaltstitel in einen neuen Pass übertragen" Style="{StaticResource {x:Type Button}}"/>
+                    <Button Content="Niederlassungserlaubnis beantragen" Style="{StaticResource {x:Type Button}}"/>
+                    <!-- Add more buttons as needed -->
+                </StackPanel>
+
+                <!-- Expanders -->
+                <!-- Add more Expanders as needed -->
+
+                <Expander Header="Studium und Ausbildung" IsExpanded="True" Margin="0,0,0,20">
+                    <StackPanel>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für eine Berufsausbildung (§ 16a)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für eine betriebliche Weiterbildung (§ 16a)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zum Besuch eines Sprachkurses (§ 16f Abs. 1)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zum Schulbesuch oder zur Teilnahme an einem Schüleraustausch (§ 16f)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Anerkennung einer ausländischen Berufs-Qualifikation im Rahmen einer Qualifizierungsmaßnahme (§ 16d Abs. 1)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Anerkennung einer ausländischen Berufs-Qualifikation in einem nicht reglementierten Beruf (§ 16d Abs. 3)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Aufnahme eines Praktikums (§ 19c Abs. 1)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Studienvorbereitung (§ 16b Abs. 1)"/>
+                    </StackPanel>
+                </Expander>
+
+                <Expander Header="Erwerbstätigkeit" Margin="0,0,0,20">
+                    <StackPanel>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Fachkräfte mit akademischer Ausbildung (§ 18b)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Fachkräfte mit Berufsausbildung (§ 18a)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Fachkräfte zur Arbeitsplatzsuche - Erteilung (§ 20)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für in anderen EU-Staaten langfristig Aufenthaltsberechtigte (§ 38a)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für wissenschaftliche Mitarbeiter und Forscher (§ 18d)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Aufnahme eines Praktikums (§ 19c Abs. 1)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Beschäftigung als Au-pair (§ 19c Abs. 1)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur selbstständigen oder freiberuflichen Tätigkeit - Verlängerung (§ 21)"/>
+                    </StackPanel>
+                </Expander>
+
+                <Expander Header="Familiäre Gründe" Margin="0,0,0,20">
+                    <StackPanel>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner und Kinder von Fachkräften, Studierenden, Auszubildenden, Wissenschaftlern und Lehrkräften (§§ 29-32)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner und Kinder von Inhabern einer Blauen Karte EU (§§ 29-32)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner, Eltern und Kinder von ausländischen Familienangehörigen (§§ 29-34)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner, Eltern und Kinder von deutschen Familienangehörigen (§ 28)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner, Eltern und Kinder von subsidiär Schutzberechtigten (§ 36a)"/>
+                    </StackPanel>
+                </Expander>
+
+                <Expander Header="Humanitäre Gründe" Margin="0,0,0,20">
+                    <StackPanel>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis aus humanitären Gründen - Verlängerung (§§ 22 - 25)"/>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis in Härtefällen - Verlängerung (§ 23a)"/>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="Besondere Aufenthaltsrechte" Margin="0,0,0,20">
+                    <StackPanel>
+                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für in anderen EU-Staaten langfristig Aufenthaltsberechtigte (§ 38a)"/>
+                    </StackPanel>
+                </Expander>
+
+                <!-- Add more Expanders as needed -->
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
+            <Button Content="Zurück" Style="{StaticResource {x:Type Button}}"/>
+            <Button Content="Weiter" Style="{StaticResource {x:Type Button}}"/>
+            <TextBlock Text="Impressum  Datenschutzerklärung  Nutzungsbedingungen"
+                       Margin="10" VerticalAlignment="Center" TextDecorations="Underline" FontSize="12"/>
+        </StackPanel>
+    </Grid>
 </Window>
