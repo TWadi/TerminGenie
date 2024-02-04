@@ -20,48 +20,12 @@ namespace TerminGenie
             InitializeComponent();
         }
 
-        private string TunesienXpath;
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void OnStartButtonClick(object sender, RoutedEventArgs e)
         {
-            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
-            {
-                string selectedValue = selectedItem.Content.ToString();
-                if (selectedValue == "Tunesien")
-                {
-                    TunesienXpath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[2]/div/div[5]/label";
-                }
-            }
-        }
-
-        // Mark the method as async and keep the return type as void
-        private async void OnButtonClick(object sender, RoutedEventArgs e)
-        {
-            string xpathValue = TunesienXpath;
-
-            if (!string.IsNullOrEmpty(xpathValue))
-            {
-                string filePath = "output.xml";
-                using (XmlWriter writer = XmlWriter.Create(filePath))
-                {
-                    writer.WriteStartDocument();
-                    writer.WriteStartElement("root");
-                    writer.WriteElementString("xpathValue", xpathValue);
-                    writer.WriteEndElement();
-                    writer.WriteEndDocument();
-                }
-
-                MessageBox.Show($"XPath saved to {filePath}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                MessageBox.Show("No XPath value available to save.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
             var scheduler = new AppointmentScheduler();
             await Task.Run(() => scheduler.ContinuouslyRun());
-            // Note: The AppointmentScheduler's Run method should be compatible with async operations,
-            // and if it's not designed to be awaited, you might not need 'await Task.Run()' but just 'scheduler.Run();' depending on its implementation.
         }
+
     }
 }

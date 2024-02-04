@@ -3,160 +3,49 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Terminauswahl" Height="700" Width="800">
 
-    <!-- Window Resources for Styling -->
     <Window.Resources>
-        <!-- Styles for TextBlocks -->
-        <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Foreground" Value="#333"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-
-        <!-- Style for ComboBox -->
-        <Style TargetType="ComboBox">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-
-        <!-- Style for Buttons -->
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="40"/>
+        <!-- Style for the Start Button -->
+        <Style x:Key="StartButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="FontSize" Value="24"/>
             <Setter Property="Background" Value="#007ACC"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Opacity="0.7" Color="Black"/>
+                </Setter.Value>
+            </Setter>
         </Style>
 
-        <!-- Style for Expanders -->
-        <Style TargetType="Expander">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Foreground" Value="#333"/>
-            <Setter Property="FontSize" Value="16"/>
+        <!-- Style for the Attribution Text -->
+        <Style x:Key="AttributionTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#666"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
         </Style>
     </Window.Resources>
 
     <!-- Main Grid -->
     <Grid>
-        <!-- Grid Definitions -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <TextBlock Grid.Row="0" Text="Terminauswahl - Schritt 3 von 3"
-                   FontWeight="Bold" FontSize="24" Margin="10" HorizontalAlignment="Left"/>
+        <!-- Logo Section -->
+        <Image Source="/Logo.png" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="250"/>
 
-        <!-- Remaining Time -->
-        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
-            <Image Source="/Logo.png" Width="125" Height="152" VerticalAlignment="Center" Margin="0,0,5,0" RenderTransformOrigin="1,0.5"/>
-        </StackPanel>
+        <!-- Attribution Text -->
+        <TextBlock Text="Developed by T.Wadi" Grid.Row="1" Style="{StaticResource AttributionTextStyle}" HorizontalAlignment="Center"/>
 
-        <!-- ScrollViewer to Enable Scrolling -->
-        <ScrollViewer Grid.Row="1">
-            <!-- Main content -->
-            <StackPanel Margin="10">
-                <TextBlock Text="Angaben zum Anliegen" FontWeight="Bold" Style="{StaticResource HeaderTextBlockStyle}"/>
-
-                <!-- Staatsangehörigkeit -->
-                <TextBlock Text="Staatsangehörigkeit (Wenn Sie staatenlos sind: Wählen Sie bitte den Status, aus dem Sie oder Ihre Eltern stammen.)*"
-                           Margin="0,0,0,5"/>
-                <ComboBox Margin="0,0,0,20" SelectionChanged="ComboBox_SelectionChanged" Style="{StaticResource {x:Type ComboBox}}">
-                    <ComboBoxItem Content="Bitte auswählen" IsSelected="True"/>
-                    <ComboBoxItem Content="Tunesien"/>
-                </ComboBox>
-
-                <!-- Anzahl der Personen -->
-                <TextBlock Text="Anzahl der Personen, die einen Aufenthaltstitel beantragen (auch ausländische Ehepartner und Kinder)" 
-                           FontWeight="Bold" Style="{StaticResource HeaderTextBlockStyle}" Margin="0,20,0,5"/>
-                <ComboBox Margin="0,0,0,20" Style="{StaticResource {x:Type ComboBox}}">
-                    <ComboBoxItem Content="Bitte auswählen" IsSelected="True"/>
-                    <ComboBoxItem Content="eine Person"/>
-                    <ComboBoxItem Content="zwei Personen"/>
-                    <ComboBoxItem Content="drei Personen"/>
-                    <!-- Add more items as needed -->
-                </ComboBox>
-
-                <!-- Leben Sie in Berlin -->
-                <TextBlock Text="Leben Sie in Berlin zusammen mit einem Familienangehörigen?" 
-                           FontWeight="Bold" Style="{StaticResource HeaderTextBlockStyle}" Margin="0,20,0,5"/>
-                <ComboBox Margin="0,0,0,20" Style="{StaticResource {x:Type ComboBox}}">
-                    <ComboBoxItem Content="nein"/>
-                    <ComboBoxItem Content="ja"/>
-                    <!-- Add more options if needed -->
-                </ComboBox>
-
-                <!-- Buttons -->
-                <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
-                    <Button Content="Aufenthaltstitel - beantragen" Style="{StaticResource {x:Type Button}}"/>
-                    <Button Content="Aufenthaltstitel - verlängern" Style="{StaticResource {x:Type Button}}"/>
-                    <Button Content="Aufenthaltstitel in einen neuen Pass übertragen" Style="{StaticResource {x:Type Button}}"/>
-                    <Button Content="Niederlassungserlaubnis beantragen" Style="{StaticResource {x:Type Button}}"/>
-                    <!-- Add more buttons as needed -->
-                </StackPanel>
-
-                <!-- Expanders -->
-                <!-- Add more Expanders as needed -->
-
-                <Expander Header="Studium und Ausbildung" IsExpanded="True" Margin="0,0,0,20">
-                    <StackPanel>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für eine Berufsausbildung (§ 16a)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für eine betriebliche Weiterbildung (§ 16a)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zum Besuch eines Sprachkurses (§ 16f Abs. 1)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zum Schulbesuch oder zur Teilnahme an einem Schüleraustausch (§ 16f)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Anerkennung einer ausländischen Berufs-Qualifikation im Rahmen einer Qualifizierungsmaßnahme (§ 16d Abs. 1)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Anerkennung einer ausländischen Berufs-Qualifikation in einem nicht reglementierten Beruf (§ 16d Abs. 3)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Aufnahme eines Praktikums (§ 19c Abs. 1)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Studienvorbereitung (§ 16b Abs. 1)"/>
-                    </StackPanel>
-                </Expander>
-
-                <Expander Header="Erwerbstätigkeit" Margin="0,0,0,20">
-                    <StackPanel>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Fachkräfte mit akademischer Ausbildung (§ 18b)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Fachkräfte mit Berufsausbildung (§ 18a)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Fachkräfte zur Arbeitsplatzsuche - Erteilung (§ 20)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für in anderen EU-Staaten langfristig Aufenthaltsberechtigte (§ 38a)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für wissenschaftliche Mitarbeiter und Forscher (§ 18d)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Aufnahme eines Praktikums (§ 19c Abs. 1)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur Beschäftigung als Au-pair (§ 19c Abs. 1)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis zur selbstständigen oder freiberuflichen Tätigkeit - Verlängerung (§ 21)"/>
-                    </StackPanel>
-                </Expander>
-
-                <Expander Header="Familiäre Gründe" Margin="0,0,0,20">
-                    <StackPanel>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner und Kinder von Fachkräften, Studierenden, Auszubildenden, Wissenschaftlern und Lehrkräften (§§ 29-32)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner und Kinder von Inhabern einer Blauen Karte EU (§§ 29-32)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner, Eltern und Kinder von ausländischen Familienangehörigen (§§ 29-34)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner, Eltern und Kinder von deutschen Familienangehörigen (§ 28)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für Ehepartner, Eltern und Kinder von subsidiär Schutzberechtigten (§ 36a)"/>
-                    </StackPanel>
-                </Expander>
-
-                <Expander Header="Humanitäre Gründe" Margin="0,0,0,20">
-                    <StackPanel>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis aus humanitären Gründen - Verlängerung (§§ 22 - 25)"/>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis in Härtefällen - Verlängerung (§ 23a)"/>
-                    </StackPanel>
-                </Expander>
-                <Expander Header="Besondere Aufenthaltsrechte" Margin="0,0,0,20">
-                    <StackPanel>
-                        <RadioButton GroupName="expanderGroup" Content="Aufenthaltserlaubnis für in anderen EU-Staaten langfristig Aufenthaltsberechtigte (§ 38a)"/>
-                    </StackPanel>
-                </Expander>
-
-                <!-- Add more Expanders as needed -->
-
-            </StackPanel>
-        </ScrollViewer>
-
-        <!-- Footer -->
-        <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
-            <Button Content="Weiter" Style="{StaticResource {x:Type Button}}" Click="OnButtonClick"/>
-        </StackPanel>
+        <!-- Start Button Section -->
+        <Button Content="Start" Grid.Row="2" Click="OnStartButtonClick" Style="{StaticResource StartButtonStyle}" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
