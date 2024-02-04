@@ -23,7 +23,17 @@ namespace TerminGenie
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Check if the sender is indeed a ComboBox and has a selected item
+            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                // Retrieve the Content of the selected ComboBoxItem
+                string selectedValue = selectedItem.Content.ToString();
 
+                // Now you can use the selectedValue string for your needs
+                // For example, printing it to the console
+                Console.WriteLine(selectedValue);
+            }
         }
+
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TerminGenie")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cbdb7597b7a9f754d8ecce52d2f7af27f94e885")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+542e839bd08b10235f37904673810fb51b70fb70")]
 [assembly: System.Reflection.AssemblyProductAttribute("TerminGenie")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TerminGenie")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
