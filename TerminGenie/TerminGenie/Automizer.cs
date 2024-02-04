@@ -10,7 +10,7 @@ namespace TerminGenie
     {
         private int waitTime = 20000; // Milliseconds
         private string errorMessage = "Für die gewählte Dienstleistung sind aktuell keine Termine frei! Bitte";
-        private string alarmSound = @"Alarm.wav"; // Ensure this path is correct
+        private string alarmSound = @"Alarm.wav"; 
 
         public void VisitStartPage(IWebDriver driver)
         {
@@ -40,7 +40,7 @@ namespace TerminGenie
             var countrySelectId = "xi-sel-400";
             var countrySelect = new SelectElement(driver.FindElement(By.Id(countrySelectId)));
             countrySelect.SelectByText("Tunesien");
-            Thread.Sleep(5000); // Adjust sleep times based on how responsive the website is
+            Thread.Sleep(5000); 
 
             // Confirm country selection
             var selectedCountry = countrySelect.SelectedOption.Text;
@@ -50,34 +50,34 @@ namespace TerminGenie
                 var personSelectId = "xi-sel-422";
                 var personSelect = new SelectElement(driver.FindElement(By.Id(personSelectId)));
                 personSelect.SelectByText("eine Person");
-                Thread.Sleep(2000); // Adjust sleep times as necessary
+                Thread.Sleep(2000); 
 
                 // Family option
                 var familySelectId = "xi-sel-427";
                 var familySelect = new SelectElement(driver.FindElement(By.Id(familySelectId)));
                 familySelect.SelectByText("nein");
-                Thread.Sleep(2000); // Adjust sleep times as necessary
+                Thread.Sleep(2000);
             }
 
             // Extend stay
             var extendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p";
             driver.FindElement(By.XPath(extendStayXPath)).Click();
-            Thread.Sleep(2000); // Adjust sleep times as necessary
+            Thread.Sleep(2000); 
 
             // Click on study group
             var studyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[1]/label";
             driver.FindElement(By.XPath(studyGroupXPath)).Click();
-            Thread.Sleep(2000); // Adjust sleep times as necessary
+            Thread.Sleep(2000);
 
             // b/c of study
             var studyReasonXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[2]/div/div[5]/label";
             driver.FindElement(By.XPath(studyReasonXPath)).Click();
-            Thread.Sleep(4000); // Adjust sleep times as necessary
+            Thread.Sleep(4000); 
 
             // Submit form
             var submitButtonId = "applicationForm:managedForm:proceed";
             driver.FindElement(By.Id(submitButtonId)).Click();
-            Thread.Sleep(10000); // Adjust sleep times as necessary
+            Thread.Sleep(10000); 
         }
 
         public void CheckSuccessAndRetry(IWebDriver driver)
@@ -102,7 +102,7 @@ namespace TerminGenie
         {
             using (var player = new SoundPlayer(filePath))
             {
-                player.PlaySync(); // PlaySync will play it synchronously
+                player.PlaySync(); 
             }
         }
 
@@ -113,7 +113,7 @@ namespace TerminGenie
                 var driver = driverWrapper.Driver;
                 VisitStartPage(driver);
                 AgreeTermsAndConditions(driver);
-                FillAppointmentForm(driver); // Ensure this method is defined and implemented
+                FillAppointmentForm(driver); 
                 CheckSuccessAndRetry(driver);
             }
         }
@@ -129,5 +129,4 @@ namespace TerminGenie
         }
     }
 
-    // Your CustomWebDriver class remains unchanged and is used as provided.
 }
