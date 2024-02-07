@@ -70,6 +70,7 @@ namespace TerminGenie
                     case "Tunesien":
                         schedulerConfig.CountryName = "Tunesien";
                         schedulerConfig.StudyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[1]/label";
+                        schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE285-0-2-3-305244\"]";
                         break;
 
                     case "Indien":

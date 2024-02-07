@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 using System.Media;
+using System.Diagnostics;
 
 namespace TerminGenie
 {
@@ -23,7 +24,7 @@ namespace TerminGenie
             Console.WriteLine("Visiting start page");
             driver.Navigate().GoToUrl(config.StartPageUrl);
             driver.FindElement(By.XPath(config.StartButtonXPath)).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
         }
 
         public void AgreeTermsAndConditions(IWebDriver driver)
@@ -31,8 +32,8 @@ namespace TerminGenie
             Console.WriteLine("Agreeing to terms and conditions");
             driver.FindElement(By.XPath(config.AgreementCheckboxXPath)).Click();
             Thread.Sleep(1000);
-            driver.FindElement(By.Id(config.ProceedButtonId)).Click();
-            Thread.Sleep(2000);
+            driver.FindElement(By.XPath("//*[@id=\"applicationForm:managedForm:proceed\"]")).Click();
+            Thread.Sleep(5000);
         }
 
         public void FillAppointmentForm(IWebDriver driver)
@@ -42,8 +43,6 @@ namespace TerminGenie
             // Select country
             var countrySelect = new SelectElement(driver.FindElement(By.Id(config.CountrySelectId)));
             countrySelect.SelectByText(config.CountryName);
-            Thread.Sleep(2000);
-
             // Confirm country selection
             var selectedCountry = countrySelect.SelectedOption.Text;
             if (selectedCountry == config.CountryName)
@@ -51,35 +50,33 @@ namespace TerminGenie
                 // Number of persons
                 var personSelect = new SelectElement(driver.FindElement(By.Id(config.PersonSelectId)));
                 personSelect.SelectByText(config.NumberOfPersons);
-                Thread.Sleep(1000);
-
                 // Family option
                 var familySelect = new SelectElement(driver.FindElement(By.Id(config.FamilySelectId)));
                 familySelect.SelectByText(config.FamilyOption);
-                Thread.Sleep(1000);
+                Thread.Sleep(5000);
             }
 
             // Extend stay
             driver.FindElement(By.XPath(config.ExtendStayXPath)).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Click on study group
             driver.FindElement(By.XPath(config.StudyGroupXPath)).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // b/c of study
             driver.FindElement(By.XPath(config.StudyReasonXPath)).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
 
             // Submit form
-            driver.FindElement(By.Id(config.SubmitButtonId)).Click();
-            Thread.Sleep(5000);
+            driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
+            Thread.Sleep(10000);
         }
 
         public void CheckSuccessAndRetry(IWebDriver driver)
 {
     bool success = false;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 20; i++)
     {
         if (!driver.PageSource.Contains(errorMessage))
         {
@@ -88,8 +85,8 @@ namespace TerminGenie
             break; // Break out of the loop if success is detected
         }
         Console.WriteLine("Retrying form submission");
-        driver.FindElement(By.Id(config.SubmitButtonId)).Click();
-        Thread.Sleep(waitTime);
+                driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
+                Thread.Sleep(waitTime);
     }
 
     if (success)
