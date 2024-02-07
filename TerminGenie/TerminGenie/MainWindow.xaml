@@ -12,7 +12,7 @@
             <Setter Property="Background" Value="#007ACC"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderBrush" Value="Beige"/>
             <Setter Property="Margin" Value="20"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Effect">
@@ -29,6 +29,16 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
+
+        <!-- Style for ComboBox -->
+        <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
 
     <!-- Main Grid -->
@@ -37,15 +47,24 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Logo Section -->
         <Image Source="/Logo.png" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="250"/>
 
+        <!-- ComboBox Selection -->
+        <ComboBox x:Name="countryComboBox" Grid.Row="1" Style="{StaticResource ComboBoxStyle}" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem Content="Tunesien"/>
+            <ComboBoxItem Content="Indien"/>
+            <ComboBoxItem Content="Soudan"/>
+            <!-- Add more ComboBoxItems here -->
+        </ComboBox>
+
         <!-- Attribution Text -->
-        <TextBlock Text="Developed by T.Wadi" Grid.Row="1" Style="{StaticResource AttributionTextStyle}" HorizontalAlignment="Center"/>
+        <TextBlock Text="Developed by T.Wadi" Grid.Row="2" Style="{StaticResource AttributionTextStyle}" HorizontalAlignment="Center"/>
 
         <!-- Start Button Section -->
-        <Button Content="Start" Grid.Row="2" Click="OnStartButtonClick" Style="{StaticResource StartButtonStyle}" HorizontalAlignment="Center"/>
+        <Button Content="Start" Grid.Row="3" Click="OnStartButtonClick" Style="{StaticResource StartButtonStyle}" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
