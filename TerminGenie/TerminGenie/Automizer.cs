@@ -4,6 +4,8 @@ using System;
 using System.Threading;
 using System.Media;
 using System.Diagnostics;
+using System.Security.Policy;
+using System.Windows.Shapes;
 
 namespace TerminGenie
 {
@@ -11,7 +13,7 @@ namespace TerminGenie
     {
         private SchedulerConfig config;
         private int waitTime = 20000; // Milliseconds
-        private string errorMessage = "Dieses Feld ist ein Pflichtfeld";
+        private string errorMessage = "Bitte wählen Sie einen Tag";
         private string alarmSound = @"Alarm.wav";
 
         public AppointmentScheduler(SchedulerConfig schedulerConfig)
