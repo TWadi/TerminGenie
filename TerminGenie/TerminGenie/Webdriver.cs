@@ -24,9 +24,7 @@ namespace TerminGenie
             options.AddUserProfilePreference("credentials_enable_service", false);
             options.AddUserProfilePreference("profile.password_manager_enabled", false);
 
-            // Optionally, specify the ChromeDriver directory if it's not in your PATH
-            // var driverService = ChromeDriverService.CreateDefaultService("path/to/your/chromedriver");
-            // _driver = new ChromeDriver(driverService, options);
+               options.AddArgument("--incognito");
 
             _driver = new ChromeDriver(options);
             _driver.Manage().Timeouts().ImplicitWait = _implicitWaitTime;
