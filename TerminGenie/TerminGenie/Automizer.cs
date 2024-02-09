@@ -24,16 +24,16 @@ namespace TerminGenie
             Console.WriteLine("Visiting start page");
             driver.Navigate().GoToUrl(config.StartPageUrl);
             driver.FindElement(By.XPath(config.StartButtonXPath)).Click();
-            //Thread.Sleep(5000);
+            Thread.Sleep(5000);
         }
 
         public void AgreeTermsAndConditions(IWebDriver driver)
         {
             Console.WriteLine("Agreeing to terms and conditions");
             driver.FindElement(By.XPath(config.AgreementCheckboxXPath)).Click();
-           // Thread.Sleep(1000);
+            Thread.Sleep(1000);
             driver.FindElement(By.XPath("//*[@id=\"applicationForm:managedForm:proceed\"]")).Click();
-          //  Thread.Sleep(5000);
+            Thread.Sleep(5000);
         }
 
         public void FillAppointmentForm(IWebDriver driver)
@@ -53,20 +53,20 @@ namespace TerminGenie
                 // Family option
                 var familySelect = new SelectElement(driver.FindElement(By.Id(config.FamilySelectId)));
                 familySelect.SelectByText(config.FamilyOption);
-             //   Thread.Sleep(5000);
+                Thread.Sleep(5000);
             }
 
             // Extend stay
             driver.FindElement(By.XPath(config.ExtendStayXPath)).Click();
-         //   Thread.Sleep(2000);
+            Thread.Sleep(2000);
 
             // Click on study group
             driver.FindElement(By.XPath(config.StudyGroupXPath)).Click();
-           // Thread.Sleep(2000);
+            Thread.Sleep(2000);
 
             // b/c of study
             driver.FindElement(By.XPath(config.StudyReasonXPath)).Click();
-            Thread.Sleep(7000);
+            Thread.Sleep(5000);
 
             // Submit form
             driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();

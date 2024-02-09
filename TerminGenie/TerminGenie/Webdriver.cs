@@ -23,7 +23,7 @@ namespace TerminGenie
             options.AddAdditionalOption("useAutomationExtension", false);
             options.AddUserProfilePreference("credentials_enable_service", false);
             options.AddUserProfilePreference("profile.password_manager_enabled", false);
-
+            options.AddArgument("--incognito");
             // Optionally, specify the ChromeDriver directory if it's not in your PATH
             // var driverService = ChromeDriverService.CreateDefaultService("path/to/your/chromedriver");
             // _driver = new ChromeDriver(driverService, options);
