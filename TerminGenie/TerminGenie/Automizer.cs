@@ -11,7 +11,7 @@ namespace TerminGenie
     {
         private SchedulerConfig config;
         private int waitTime = 20000; // Milliseconds
-        private string errorMessage = "Für die gewählte Dienstleistung sind aktuell keine Termine frei! Bitte";
+        private string errorMessage = "Dieses Feld ist ein Pflichtfeld";
         private string alarmSound = @"Alarm.wav";
 
         public AppointmentScheduler(SchedulerConfig schedulerConfig)
@@ -24,16 +24,16 @@ namespace TerminGenie
             Console.WriteLine("Visiting start page");
             driver.Navigate().GoToUrl(config.StartPageUrl);
             driver.FindElement(By.XPath(config.StartButtonXPath)).Click();
-          //  Thread.Sleep(5000);
+            //  Thread.Sleep(5000);
         }
 
         public void AgreeTermsAndConditions(IWebDriver driver)
         {
             Console.WriteLine("Agreeing to terms and conditions");
             driver.FindElement(By.XPath(config.AgreementCheckboxXPath)).Click();
-         //   Thread.Sleep(1000);
+            //   Thread.Sleep(1000);
             driver.FindElement(By.XPath("//*[@id=\"applicationForm:managedForm:proceed\"]")).Click();
-          //  Thread.Sleep(5000);
+            //  Thread.Sleep(5000);
         }
 
         public void FillAppointmentForm(IWebDriver driver)
@@ -53,16 +53,16 @@ namespace TerminGenie
                 // Family option
                 var familySelect = new SelectElement(driver.FindElement(By.Id(config.FamilySelectId)));
                 familySelect.SelectByText(config.FamilyOption);
-               // Thread.Sleep(5000);
+                // Thread.Sleep(5000);
             }
 
             // Extend stay
             driver.FindElement(By.XPath(config.ExtendStayXPath)).Click();
-           // Thread.Sleep(2000);
+            // Thread.Sleep(2000);
 
             // Click on study group
             driver.FindElement(By.XPath(config.StudyGroupXPath)).Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(6000);
             /*
             // b/c of study
             driver.FindElement(By.XPath(config.StudyReasonXPath)).Click();
@@ -73,33 +73,33 @@ namespace TerminGenie
             Thread.Sleep(10000);
         }
 
-            public void CheckSuccessAndRetry(IWebDriver driver)
-    {
+        public void CheckSuccessAndRetry(IWebDriver driver)
+        {
             bool success = false;
             for (int i = 0; i < 20; i++)
             {
-             if (!driver.PageSource.Contains(errorMessage))
-             {
+                if (driver.PageSource.Contains(errorMessage))
+                {
                     Console.WriteLine("!!!SUCCESS - do not close the window!!!");
-                     success = true;
-                  break; // Break out of the loop if success is detected
-             }
-              Console.WriteLine("Retrying form submission");
-              driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
-              Thread.Sleep(waitTime);
-        }
+                    success = true;
+                    break; // Break out of the loop if success is detected
+                }
+                Console.WriteLine("Retrying form submission");
+                driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
+                Thread.Sleep(waitTime);
+            }
 
-        if (success)
-        {
-            // Continue to play the sound every 15 seconds to alert the user.
-            // This loop will run indefinitely until the user manually closes the program.
-            while (true)
+            if (success)
             {
-                PlaySound(alarmSound);
-                Thread.Sleep(15000); // Wait for 15 seconds before playing the sound again.
+                // Continue to play the sound every 15 seconds to alert the user.
+                // This loop will run indefinitely until the user manually closes the program.
+                while (true)
+                {
+                    PlaySound(alarmSound);
+                    Thread.Sleep(15000); // Wait for 15 seconds before playing the sound again.
+                }
             }
         }
-    }
 
 
 
