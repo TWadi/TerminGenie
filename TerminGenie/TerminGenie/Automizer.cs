@@ -78,7 +78,7 @@ namespace TerminGenie
     bool success = false;
     for (int i = 0; i < 20; i++)
     {
-        if (driver.PageSource.Contains(errorMessage))
+        if (driver.PageSource.Contains("Bitte wählen Sie einen Tag"))
         {
             Console.WriteLine("!!!SUCCESS - do not close the window!!!");
             success = true;
