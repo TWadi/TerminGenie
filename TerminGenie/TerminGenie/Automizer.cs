@@ -24,7 +24,7 @@ namespace TerminGenie
             Console.WriteLine("Visiting start page");
             driver.Navigate().GoToUrl(config.StartPageUrl);
             driver.FindElement(By.XPath(config.StartButtonXPath)).Click();
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
         }
 
         public void AgreeTermsAndConditions(IWebDriver driver)
@@ -70,13 +70,13 @@ namespace TerminGenie
 
             // Submit form
             driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
-            Thread.Sleep(10000);
+            Thread.Sleep(5000);
         }
 
         public void CheckSuccessAndRetry(IWebDriver driver)
 {
     bool success = false;
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 10; i++)
     {
         if (driver.PageSource.Contains("Bitte wählen Sie einen Tag"))
         {
