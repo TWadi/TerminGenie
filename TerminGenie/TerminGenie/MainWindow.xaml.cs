@@ -32,7 +32,7 @@ namespace TerminGenie
                 NumberOfPersons = "eine Person", // Updated to match the option used in FillAppointmentForm method
                 FamilySelectId = "xi-sel-427", // Updated to match the ID used in FillAppointmentForm method for family selection
                 FamilyOption = "nein", // Updated to match the option used in FillAppointmentForm method
-                ExtendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p", // Updated based on the XPath used in FillAppointmentForm method for extend stay option
+                ExtendStayXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[4]/label/p", // Updated based on the XPath used in FillAppointmentForm method for extend stay option
                 StudyGroupXPath = "", // Updated to match the XPath used in FillAppointmentForm method for study group option
                 StudyReasonXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[2]/div/div[5]/label", // Updated to match the XPath used in FillAppointmentForm method for study reason option
                 SubmitButtonId = "applicationForm:managedForm:proceed" // Correct, matches the ID used in multiple methods
@@ -69,8 +69,8 @@ namespace TerminGenie
                 {
                     case "Tunesien":
                         schedulerConfig.CountryName = "Tunesien";
-                        schedulerConfig.StudyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[1]/label";
-                        schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE285-0-2-3-305244\"]";
+                        schedulerConfig.StudyGroupXPath = "//*[@id=\"SERVICEWAHL_DE285-0-4-99-327012\"]";
+                      //  schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE285-0-2-3-305244\"]";
                         break;
 
                     case "Indien":

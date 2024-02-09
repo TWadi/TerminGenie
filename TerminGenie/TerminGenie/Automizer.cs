@@ -63,10 +63,10 @@ namespace TerminGenie
             // Click on study group
             driver.FindElement(By.XPath(config.StudyGroupXPath)).Click();
             Thread.Sleep(2000);
-
+            /*
             // b/c of study
             driver.FindElement(By.XPath(config.StudyReasonXPath)).Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(4000);*/
 
             // Submit form
             driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
