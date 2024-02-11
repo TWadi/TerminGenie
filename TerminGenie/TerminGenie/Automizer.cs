@@ -1,11 +1,16 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+
 using System;
 using System.Threading;
 using System.Media;
+using System.IO;
 using System.Diagnostics;
 using System.Security.Policy;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
+
+using Serilog;
 
 namespace TerminGenie
 {
@@ -15,15 +20,34 @@ namespace TerminGenie
         private int waitTime = 20000; // Milliseconds
         private string errorMessage = "Bitte wählen Sie einen Tag";
         private string alarmSound = @"Alarm.wav";
+        private string logPath = @"logs/appointmentSchedulerLog.txt";
+
+        [DllImport("kernel32.dll")]
+        public static extern bool AllocConsole();
 
         public AppointmentScheduler(SchedulerConfig schedulerConfig)
         {
+            // Check if the log file exists and delete it
+            if (File.Exists(logPath))
+            {
+                File.Delete(logPath);
+            }
+
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .MinimumLevel.Debug()
+                .WriteTo.File(logPath)
+                .CreateLogger();
+
+            AllocConsole();
+
+            Log.Information("AppointmentScheduler initialized");
             config = schedulerConfig;
         }
 
         public void VisitStartPage(IWebDriver driver)
         {
-            Console.WriteLine("Visiting start page");
+            Log.Information("Visiting start page");
             driver.Navigate().GoToUrl(config.StartPageUrl);
             driver.FindElement(By.XPath(config.StartButtonXPath)).Click();
             //  Thread.Sleep(5000);
@@ -31,7 +55,7 @@ namespace TerminGenie
 
         public void AgreeTermsAndConditions(IWebDriver driver)
         {
-            Console.WriteLine("Agreeing to terms and conditions");
+            Log.Information("Agreeing to terms and conditions");
             driver.FindElement(By.XPath(config.AgreementCheckboxXPath)).Click();
             //   Thread.Sleep(1000);
             driver.FindElement(By.XPath("//*[@id=\"applicationForm:managedForm:proceed\"]")).Click();
@@ -40,7 +64,7 @@ namespace TerminGenie
 
         public void FillAppointmentForm(IWebDriver driver)
         {
-            Console.WriteLine("Filling out appointment form");
+            Log.Information("Filling out appointment form");
 
             // Select country
             var countrySelect = new SelectElement(driver.FindElement(By.Id(config.CountrySelectId)));
@@ -82,11 +106,11 @@ namespace TerminGenie
             {
                 if (driver.PageSource.Contains(errorMessage))
                 {
-                    Console.WriteLine("!!!SUCCESS - do not close the window!!!");
+                    Log.Information("!!!SUCCESS - do not close the window!!!");
                     success = true;
                     break; // Break out of the loop if success is detected
                 }
-                Console.WriteLine("Retrying form submission");
+                Log.Information("Retrying form submission");
                 driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
                 Thread.Sleep(waitTime);
             }
@@ -115,7 +139,7 @@ namespace TerminGenie
 
         public void RunOnce()
         {
-            Console.WriteLine("!!!SUCCESS - do not close the window!!!");
+            Log.Information("!!!SUCCESS - do not close the window!!!");
 
             using (var driverWrapper = new CustomWebDriver())
             {
@@ -131,7 +155,7 @@ namespace TerminGenie
         {
             while (true)
             {
-                Console.WriteLine("Starting a new attempt");
+                Log.Information("Starting a new attempt");
                 RunOnce();
                 Thread.Sleep(waitTime);
             }
