@@ -79,7 +79,7 @@ namespace TerminGenie
         public void CheckSuccessAndRetry(IWebDriver driver)
 {
     bool success = false;
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < config.delay; i++)
     {
         if (driver.PageSource.Contains("Bitte wählen Sie einen Tag"))
         {

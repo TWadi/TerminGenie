@@ -36,7 +36,8 @@ namespace TerminGenie
                 StudyGroupXPath = "", // Updated to match the XPath used in FillAppointmentForm method for study group option
                 StudyReasonXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[2]/div/div[5]/label", // Updated to match the XPath used in FillAppointmentForm method for study reason option
                 SubmitButtonId = "applicationForm:managedForm:proceed", // Correct, matches the ID used in multiple methods
-                test_mode = false
+                test_mode = false,
+                delay = 10
             };
 
 
@@ -79,7 +80,7 @@ namespace TerminGenie
                         schedulerConfig.CountryName = "Indien";
                         schedulerConfig.ExtendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p";
                         schedulerConfig.StudyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[9]/div/div[1]/label";
-                        schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE436-0-2-3-305244\"]"; 
+                        schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE436-0-2-3-305244\"]";
                         break;
 
                     case "Soudan":
@@ -113,6 +114,26 @@ namespace TerminGenie
             schedulerConfig.StudyGroupXPath = "//*[@id=\"inner-285-0-4\"]/div/div[2]/div/div[1]/label";
             schedulerConfig.StudyReasonXPath = "";
         }
-    }
 
+        private void delay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox; // Cast the sender to a ComboBox.
+            var selectedItem = comboBox.SelectedItem as ComboBoxItem; // Get the selected ComboBoxItem.
+            if (selectedItem != null)
+            {
+                // Parse the content of the selected item to an integer
+                if (int.TryParse(selectedItem.Content.ToString(), out int parsedValue))
+                {
+                    schedulerConfig.delay = parsedValue; // Set schedulerConfig.delay with the parsed value
+                }
+                else
+                {
+                    // Optionally, handle the case where parsing fails, such as setting to a default value
+                    schedulerConfig.delay = 10; // Assuming defaultValue is defined elsewhere
+                }
+            }
+        }
+
+
+    }
 }

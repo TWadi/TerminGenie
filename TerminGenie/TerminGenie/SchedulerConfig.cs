@@ -4,6 +4,7 @@ namespace TerminGenie
 {
     public class SchedulerConfig
     {
+        public int delay { get; set; }
         public string StartPageUrl { get; set; }
         public string StartButtonXPath { get; set; }
         public string AgreementCheckboxXPath { get; set; }
