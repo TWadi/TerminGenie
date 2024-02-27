@@ -58,6 +58,7 @@
             <ComboBoxItem Content="Tunesien"/>
             <ComboBoxItem Content="Indien"/>
             <ComboBoxItem Content="Soudan"/>
+            <ComboBoxItem Content="Ägypten"/>
             <!-- Add more ComboBoxItems here -->
         </ComboBox>
 
@@ -66,5 +67,13 @@
 
         <!-- Start Button Section -->
         <Button Content="Start" Grid.Row="3" Click="OnStartButtonClick" Style="{StaticResource StartButtonStyle}" HorizontalAlignment="Center"/>
+        <Button x:Name="TestMode" Content="TestMode" HorizontalAlignment="Left" Margin="668,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.429,-3.856" Height="39" Width="103" Click="Button_Click" Background="#FF007ACC" BorderBrush="White" Foreground="White">
+            <Button.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.OpacityMask>
+        </Button>
     </Grid>
 </Window>

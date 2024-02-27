@@ -35,7 +35,8 @@ namespace TerminGenie
                 ExtendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p", // Updated based on the XPath used in FillAppointmentForm method for extend stay option
                 StudyGroupXPath = "", // Updated to match the XPath used in FillAppointmentForm method for study group option
                 StudyReasonXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[2]/div/div[5]/label", // Updated to match the XPath used in FillAppointmentForm method for study reason option
-                SubmitButtonId = "applicationForm:managedForm:proceed" // Correct, matches the ID used in multiple methods
+                SubmitButtonId = "applicationForm:managedForm:proceed", // Correct, matches the ID used in multiple methods
+                test_mode = false
             };
 
 
@@ -69,20 +70,30 @@ namespace TerminGenie
                 {
                     case "Tunesien":
                         schedulerConfig.CountryName = "Tunesien";
+                        schedulerConfig.ExtendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p";
                         schedulerConfig.StudyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[1]/label";
                         schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE285-0-2-3-305244\"]";
                         break;
 
                     case "Indien":
                         schedulerConfig.CountryName = "Indien";
+                        schedulerConfig.ExtendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p";
                         schedulerConfig.StudyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[9]/div/div[1]/label";
                         schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE436-0-2-3-305244\"]"; 
                         break;
 
                     case "Soudan":
                         schedulerConfig.CountryName = "Sudan";
+                        schedulerConfig.ExtendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p";
                         schedulerConfig.StudyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[1]/label";
                         schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE276-0-2-3-305244\"]";
+                        break;
+
+                    case "Ägypten":
+                        schedulerConfig.CountryName = "Ägypten";
+                        schedulerConfig.ExtendStayXPath = "//*[@id='xi-div-30']/div[2]/label/p";
+                        schedulerConfig.StudyGroupXPath = "/html/body/div[2]/div[2]/div[4]/div[2]/form/div[2]/div/div[2]/div[8]/div[2]/div[2]/div[1]/fieldset/div[8]/div[1]/div[1]/div[1]/div[8]/div/div[1]/label/p";
+                        schedulerConfig.StudyReasonXPath = "//*[@id=\"SERVICEWAHL_DE287-0-2-3-305244\"]";
                         break;
 
                     // Add more cases as needed
@@ -94,7 +105,14 @@ namespace TerminGenie
             }
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            schedulerConfig.CountryName = "Tunesien";
+            schedulerConfig.test_mode = true;
+            schedulerConfig.ExtendStayXPath = "//*[@id=\"xi-div-30\"]/div[4]/label/p";
+            schedulerConfig.StudyGroupXPath = "//*[@id=\"inner-285-0-4\"]/div/div[2]/div/div[1]/label";
+            schedulerConfig.StudyReasonXPath = "";
+        }
     }
 
 }

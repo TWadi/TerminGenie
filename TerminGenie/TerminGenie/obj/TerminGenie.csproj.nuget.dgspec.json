@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Wadi\\OneDrive\\Desktop\\New folder\\New folder (3)\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj": {}
+    "C:\\Users\\Wadi\\OneDrive\\Desktop\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Wadi\\OneDrive\\Desktop\\New folder\\New folder (3)\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj": {
+    "C:\\Users\\Wadi\\OneDrive\\Desktop\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Wadi\\OneDrive\\Desktop\\New folder\\New folder (3)\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj",
+        "projectUniqueName": "C:\\Users\\Wadi\\OneDrive\\Desktop\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj",
         "projectName": "TerminGenie",
-        "projectPath": "C:\\Users\\Wadi\\OneDrive\\Desktop\\New folder\\New folder (3)\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj",
+        "projectPath": "C:\\Users\\Wadi\\OneDrive\\Desktop\\TerminGenie\\TerminGenie\\TerminGenie\\TerminGenie.csproj",
         "packagesPath": "C:\\Users\\Wadi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Wadi\\OneDrive\\Desktop\\New folder\\New folder (3)\\TerminGenie\\TerminGenie\\TerminGenie\\obj\\",
+        "outputPath": "C:\\Users\\Wadi\\OneDrive\\Desktop\\TerminGenie\\TerminGenie\\TerminGenie\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -31,9 +31,7 @@ namespace TerminGenie
         {
             Console.WriteLine("Agreeing to terms and conditions");
             driver.FindElement(By.XPath(config.AgreementCheckboxXPath)).Click();
-            Thread.Sleep(1000);
             driver.FindElement(By.XPath("//*[@id=\"applicationForm:managedForm:proceed\"]")).Click();
-            Thread.Sleep(5000);
         }
 
         public void FillAppointmentForm(IWebDriver driver)
@@ -53,20 +51,25 @@ namespace TerminGenie
                 // Family option
                 var familySelect = new SelectElement(driver.FindElement(By.Id(config.FamilySelectId)));
                 familySelect.SelectByText(config.FamilyOption);
-                Thread.Sleep(5000);
             }
 
             // Extend stay
             driver.FindElement(By.XPath(config.ExtendStayXPath)).Click();
-            Thread.Sleep(2000);
 
             // Click on study group
             driver.FindElement(By.XPath(config.StudyGroupXPath)).Click();
-            Thread.Sleep(2000);
 
-            // b/c of study
-            driver.FindElement(By.XPath(config.StudyReasonXPath)).Click();
-            Thread.Sleep(5000);
+            if(config.test_mode)
+            {
+                Thread.Sleep(7000);
+
+            }
+            else
+            {
+                // b/c of study
+                driver.FindElement(By.XPath(config.StudyReasonXPath)).Click();
+                Thread.Sleep(7000);
+            }
 
             // Submit form
             driver.FindElement(By.Id("applicationForm:managedForm:proceed")).Click();
@@ -76,7 +79,7 @@ namespace TerminGenie
         public void CheckSuccessAndRetry(IWebDriver driver)
 {
     bool success = false;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 20; i++)
     {
         if (driver.PageSource.Contains("Bitte wählen Sie einen Tag"))
         {

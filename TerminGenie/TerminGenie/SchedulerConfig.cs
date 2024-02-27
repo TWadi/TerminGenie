@@ -19,6 +19,7 @@ namespace TerminGenie
         public string StudyGroupXPath { get; set; }
         public string StudyReasonXPath { get; set; }
         public string SubmitButtonId { get; set; }
+        public bool test_mode  { get; set; }
 
         // Additional properties for error handling, messages, and sounds
         public string ErrorMessage { get; set; }
@@ -33,7 +34,6 @@ namespace TerminGenie
             ErrorMessage = "Für die gewählte Dienstleistung sind aktuell keine Termine frei! Bitte";
             AlarmSoundPath = @"Alarm.wav";
         }
-
         // You might want to add methods here for loading configurations from a file or database
         // This way, you can change the behavior of your automation without recompiling the application
     }
